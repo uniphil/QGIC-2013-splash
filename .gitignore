@@ -4,3 +4,7 @@
 
 # virtualenv stuff
 venv/
+
+# don't track sublime project
+*.sublime-project
+*.sublime-workspace
