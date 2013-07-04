@@ -1,0 +1,6 @@
+# compiled python stuff
+*.pyc
+*.pyo
+
+# virtualenv stuff
+venv/
