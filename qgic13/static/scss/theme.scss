@@ -1,0 +1,171 @@
+$dark: rgba(0, 0, 0, 0.8);
+$light: #fff;
+$accent: hsl(106, 21%, 39%);
+$error: hsl(12, 32%, 32%);
+
+$hovertrans: 0.2s;
+
+$small: 0.8em;
+$loose: 1.618em;
+$tight: 1.4em;
+
+@mixin invert {
+    color: $light;
+    background: $dark;
+}
+@mixin striped {
+    @include invert;
+    display: inline-block;
+    line-height: 1em;
+    padding: 0.2rem 0.4rem;
+    text-transform: uppercase;
+    transition: background $hovertrans;
+}
+@mixin stripeda {
+    @include striped;
+    &:hover {
+        background: $accent;
+    }
+}
+@mixin box($colour: $dark) {
+    border-color: $colour;
+    h1 {
+        @include striped;
+        background: $colour;
+        margin: 0;
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+    p {
+        margin: 0.4rem 0 0;
+        font-size: $small;
+        color: $colour;
+        &:first-child {
+            margin: 0;
+        }
+    }
+}
+@mixin visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: $dark;
+
+}
+
+
+::-moz-selection {
+    @include invert;
+    text-shadow: none;
+}
+::selection {
+    @include invert;
+    text-shadow: none;
+}
+
+header {
+    h1 {
+        margin: 0;
+        font-size: 3rem;
+        @include striped;
+    }
+    p {
+        margin: 0;
+        font-weight: 700;
+    }
+}
+
+nav {
+    margin: 1rem 0;
+
+    ul,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline;
+        & > a {
+            @include stripeda;
+        }
+    }
+}
+
+h1,
+h2,
+h3 {
+    margin: 1em 0 0.5em;
+}
+
+p {
+    line-height: $loose;
+}
+
+aside {
+    @include box;
+    width: 32%;
+    float: right;
+    margin: 1rem 0 1rem 2rem;
+
+    p {
+        line-height: $tight;
+    }
+}
+
+.message {
+    @include box;
+    margin: 1rem 0;
+    padding: 0.4rem;
+    border: 1px dashed $dark;
+
+    &.error {
+        @include box($error);
+    }
+
+    &.notification {
+        @include box($accent);
+    }
+}
+
+label {
+    display: block;
+    font-size: $small;
+}
+
+button {
+    @include stripeda;
+    display: block;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid $light;
+    box-shadow: 0 0 0 1px $dark;
+}
+
+.radio-select {
+    padding: 1px;
+    border: 1px solid $dark;
+    display: inline-block;
+    position: relative;
+
+    input[type="radio"] {
+        @include visuallyhidden;
+    }
+
+    input[type="radio"] + label {
+        display: inline-block;
+        padding: 0 1rem;
+    }
+    input[type="radio"]:checked + label {
+        @include invert;
+    }
+}
