@@ -1,7 +1,8 @@
-$dark: rgba(0, 0, 0, 0.8);
-$light: #fff;
-$accent: hsl(106, 21%, 39%);
-$error: hsl(12, 32%, 32%);
+$text: rgba(255, 255, 255, 0.7);
+$alt: rgba(0, 0, 0, 0.8);
+$tape: rgba(200, 200, 200, 0.6);
+$accent: hsl(106, 21%, 42%);
+$error: hsl(9, 38%, 48%);
 
 $hovertrans: 0.2s;
 
@@ -10,11 +11,12 @@ $loose: 1.618em;
 $tight: 1.4em;
 
 @mixin invert {
-    color: $light;
-    background: $dark;
+    color: $alt;
+    background: $text;
 }
 @mixin striped {
     @include invert;
+    background: $tape;
     display: inline-block;
     line-height: 1em;
     padding: 0.2rem 0.4rem;
@@ -27,7 +29,7 @@ $tight: 1.4em;
         background: $accent;
     }
 }
-@mixin box($colour: $dark) {
+@mixin box($colour: $text) {
     border-color: $colour;
     h1 {
         @include striped;
@@ -58,8 +60,8 @@ $tight: 1.4em;
 
 body {
     font-family: 'Open Sans', sans-serif;
-    color: $dark;
-
+    color: $text;
+    background: #333 url('../img/dark_wood.png');
 }
 
 
@@ -111,6 +113,16 @@ p {
     line-height: $loose;
 }
 
+a {
+    color: $text;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+        color: #fff;
+    }
+}
+
 aside {
     @include box;
     width: 32%;
@@ -126,7 +138,8 @@ aside {
     @include box;
     margin: 1rem 0;
     padding: 0.4rem;
-    border: 1px dashed $dark;
+    border: 1px dashed $text;
+    background: rgba(0, 0, 0, 0.4);
 
     &.error {
         @include box($error);
@@ -147,13 +160,13 @@ button {
     display: block;
     padding-left: 1em;
     padding-right: 1em;
-    border: 1px solid $light;
-    box-shadow: 0 0 0 1px $dark;
+    border: 1px solid $alt;
+    box-shadow: 0 0 0 1px $text;
 }
 
 .radio-select {
     padding: 1px;
-    border: 1px solid $dark;
+    border: 1px solid $text;
     display: inline-block;
     position: relative;
 

@@ -3,13 +3,17 @@
 from qgic13 import app
 try:
     from scss import Scss as S
-    import os, glob
+    import os  # , glob
     def compile_scss():
-        scss_shlex = os.path.join(app.name, 'static', 'scss', '*.scss')
-        scss_files = glob.glob(scss_shlex)
-        scss = (S().compile(open(f).read()) for f in scss_files)
-        [open(f.replace('scss', 'css'), 'w').write(S().compile(open(f).read())) for f in scss_files]
-        return 'compiled some scss: {}'.format(', '.join(scss_files))
+        # scss_shlex = os.path.join(app.name, 'static', 'scss', '*.scss')
+        # scss_files = glob.glob(scss_shlex)
+        # scss = (S().compile(open(f).read()) for f in scss_files)
+        # [open(f.replace('scss', 'css'), 'w').write(S().compile(open(f).read())) for f in scss_files]
+        # return 'compiled some scss: {}'.format(', '.join(scss_files))
+        scss = os.path.join(app.name, 'static', 'scss', 'main.scss')
+        output = os.path.join(app.name, 'static', 'css', 'main.css')
+        open(output, 'w').write(S().compile(open(scss).read()))
+        return "compiled scss"
 
 except ImportError:
     compile_scss = lambda: 'pyscss not found. not compiling css.'
@@ -19,5 +23,5 @@ app.debug = True
 
 
 if __name__ == '__main__':
-    print(compile_scss())
+    # print(compile_scss())
     app.run()

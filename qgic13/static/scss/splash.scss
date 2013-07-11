@@ -1,0 +1,45 @@
+
+body {
+    text-align: center;
+}
+
+#splash-box {
+    display: inline-block;
+    margin: 16% 0 0;
+
+    time,
+    h1,
+    p.subtitle {
+        @include striped;
+        margin: 0.4rem 0;
+        display: block;
+        float: left;
+        clear: left;
+        font-weight: bold;
+    }
+    time {
+        font-size: 3.333rem;
+    }
+    p.subtitle {
+        float: right;
+    }
+    #further {
+        clear: both;
+        padding: 3rem 0;
+    }
+
+    .tease {
+        @include striped;
+        background: rgba(127, 0, 0, 0.4);
+        color: $text;
+        font-size: $small;
+        padding: 0.1rem;
+        font-weight: bold;
+        // vertical-align: top;
+    }
+
+}
+
+
+
+
