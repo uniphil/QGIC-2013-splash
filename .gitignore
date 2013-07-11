@@ -8,3 +8,6 @@ venv/
 # don't track sublime project
 *.sublime-project
 *.sublime-workspace
+
+# ignore sassy stuff
+.sass-cache/
